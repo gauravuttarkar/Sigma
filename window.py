@@ -8,6 +8,8 @@ options = ["Web", "Local" , "QnA"]
 speech_key, service_region = "ce65e998f2fc4c64b8b4ef77d62d0518", "westus"
 speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
 
+def on_local(cmd):
+	os.system("gnome-open " + cmd)
 
 def voice():
 	speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
@@ -56,11 +58,17 @@ def on_button(option):
 		for i in commands:
 			commandList.append(i)
 		#print(commands)
-		for command in commandList:
-			print(command)
-			if len(command) > 0:
-				os.system("gnome-open " + command)
-		pass
+		# for command in commandList:
+		# 	print(command)
+		# 	if len(command) > 0:
+		# 		os.system("gnome-open " + command)
+		# pass
+		w = tk.Label(master, text="Results")
+		w.pack()
+		for i,cmd in enumerate(commandList):
+			button = tk.Button(master, text = cmd,  command = lambda cmd=cmd:on_local(cmd)  )
+			button.pack()
+
 		"""GAURAV FUNCTION"""
 	elif option == "Web":
 		query = searchBox.get().replace(" ", "+")
