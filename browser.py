@@ -20,7 +20,9 @@ def on_button(option):
 		window = uic.loadUi(path_ui)
 		window.widget.load(QtCore.QUrl("https://www.duckduckgo.com/?q="+ query ))
 		window.show()
-		sys.exit(app.exec_())
+		app.exec_()
+		window.destroy()
+		app.destroy()
 
 
 	elif option == "QnA":
@@ -32,25 +34,24 @@ def on_search():
 	print(searchBox.get())
 
 
-def create():
-	master = tk.Tk()
-	master.title('Sigma Σ')
-	master.geometry("%dx%d" % (1000, 500))
 
-	b= tk.Button(master,command = on_search)
-	photo= tk.PhotoImage(file="sigma1.png")
-	b.config(image=photo,width="30",height="30")
-	b.pack()
+master = tk.Tk()
+master.title('Sigma Σ')
+master.geometry("%dx%d" % (1000, 500))
+
+b= tk.Button(master,command = on_search)
+photo= tk.PhotoImage(file="sigma1.png")
+b.config(image=photo,width="30",height="30")
+b.pack()
 
 
-	searchBox = tk.Entry(master, textvariable = "Type here to search! ",width = 60)
-	searchBox.pack()
+searchBox = tk.Entry(master, textvariable = "Type here to search! ",width = 60)
+searchBox.pack()
 
-	for i,option in enumerate(options):
-		B= tk.Button(master, text = option, command = lambda option=option:on_button(option))
-		B.pack()
-	master.mainloop()
+for i,option in enumerate(options):
+	B= tk.Button(master, text = option, command = lambda option=option:on_button(option))
+	B.pack()
+master.mainloop()
 
-create()
 
 	

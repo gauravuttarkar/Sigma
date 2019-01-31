@@ -1,8 +1,5 @@
 import tkinter as tk
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-import time
+import webbrowser
 
 options = ["Web", "Local" , "QnA"]
 
@@ -12,19 +9,9 @@ def on_button(option):
 		pass
 		"""GAURAV FUNCTION"""
 	elif option == "Web":
-		query = searchBox.get()
-		#query = searchBox.get().replace(" ", "+")
-		#driver = webdriver.Chrome(executable_path = "/home/vrushank/Sigma/chromedriver")
+		query = searchBox.get().replace(" ", "+")
+		webbrowser.open('http://google.com/search?q='+query)
 
-		driver = webdriver.Firefox(executable_path = "/home/vrushank/Sigma/geckodriver")
-		driver.get("http://www.google.com")
-		a = driver.find_element_by_xpath('//*[@id="tsf"]/div[2]/div/div[1]/div/div[1]/input')
-		a.click()
-		a.send_keys(query)
-		driver.find_element_by_xpath('//*[@id="tsf"]/div[2]/div/div[3]/center/input[1]').click()
-
-
-		
 		"""My FUNCTION"""
 	elif option == "QnA":
 		pass
