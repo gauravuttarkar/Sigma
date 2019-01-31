@@ -91,6 +91,8 @@ master.geometry("%dx%d" % (1000, 500))
 
 b= tk.Button(master,command = on_search)
 voice = tk.Button(master,command = voice)
+pic= tk.PhotoImage(file="finalMic.png")
+voice.config(image=pic,width="30",height="30")
 
 photo= tk.PhotoImage(file="sigma1.png")
 b.config(image=photo,width="30",height="30")
