@@ -9,7 +9,7 @@ import subprocess
 API_KEY = "AIzaSyDKAjr9kU3Wb3aswdOc8fjCJT0xdOluB0c"
 
 def IpAddress():
-	
+	pass
 
 
 def calendar():
@@ -26,7 +26,7 @@ def openFunction(tokens):
 	commandList = []
 	#if tokens[0] in ['file','document']:
 
-	command = "sudo find /Users -type f -name '" + tokens[0] + "'"  
+	command = "sudo find /home -type f -name '" + tokens[0] + "'"  
 	ans = subprocess.check_output(command, shell=True);
 	command = str(ans,'utf-8').rstrip()
 	commands = command.split("\n")
@@ -35,7 +35,7 @@ def openFunction(tokens):
 	print("in here")
 	#os.system(command)
 	#if tokens[0] in ['directory','folder']:
-	command = "sudo find /Users -type d -name '" + tokens[0] + "'"  
+	command = "sudo find /home -type d -name '" + tokens[0] + "'"  
 	#os.system(command)
 	ans = subprocess.check_output(command, shell=True);
 	#print(ans)
@@ -47,7 +47,7 @@ def openFunction(tokens):
 	for command in commandList:
 		print(command)
 		if len(command) > 0:
-			os.system("open " + command)
+			os.system("gnome-open " + command)
 
 def checkBrowser(tokens):
 
