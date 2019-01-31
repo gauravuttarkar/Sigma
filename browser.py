@@ -21,6 +21,9 @@ def on_button(option):
 		window.widget.load(QtCore.QUrl("https://www.duckduckgo.com/?q="+ query ))
 		window.show()
 		app.exec_()
+		window.destroy()
+		app.destroy()
+
 
 	elif option == "QnA":
 		pass
@@ -49,8 +52,7 @@ searchBox.pack()
 for i,option in enumerate(options):
 	B= tk.Button(master, text = option, command = lambda option=option:on_button(option))
 	B.pack()
-
-
-
 master.mainloop()
+
+
 	
