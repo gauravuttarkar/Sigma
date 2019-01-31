@@ -4,7 +4,7 @@ import sys
 from PyQt5 import QtCore, QtWidgets, QtWebEngineWidgets, uic
 from PIL import Image, ImageTk
 import tkinter as tk
-
+import subprocess
 options = ["Web", "Local" , "QnA"]
 
 def on_button(option):
@@ -14,7 +14,7 @@ def on_button(option):
 		commandList = []
 	#if tokens[0] in ['file','document']:
 
-		command = "sudo find /Users -type f -name '" + query + "'"  
+		command = "sudo find /home -type f -name '" + query + "'"  
 		ans = subprocess.check_output(command, shell=True);
 		command = str(ans,'utf-8').rstrip()
 		commands = command.split("\n")
@@ -23,7 +23,7 @@ def on_button(option):
 		print("in here")
 		#os.system(command)
 		#if tokens[0] in ['directory','folder']:
-		command = "sudo find /Users -type d -name '" + query + "'"  
+		command = "sudo find /home -type d -name '" + query + "'"  
 		#os.system(command)
 		ans = subprocess.check_output(command, shell=True);
 		#print(ans)
@@ -35,7 +35,7 @@ def on_button(option):
 		for command in commandList:
 			print(command)
 			if len(command) > 0:
-				os.system("open " + command)
+				os.system("gnome-open " + command)
 		pass
 		"""GAURAV FUNCTION"""
 		
@@ -66,8 +66,8 @@ master.title('Sigma Σ')
 master.geometry("%dx%d" % (1000, 500))
 
 b= tk.Button(master,command = on_search)
-img = Image.open("sigma1.png")
-photo= tk.PhotoImage(img)
+#img = Image.open("sigma1.png")
+photo= tk.PhotoImage(file="sigma1.png")
 b.config(width="30",height="30")
 b.pack()
 
