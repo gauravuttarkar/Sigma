@@ -10,6 +10,32 @@ options = ["Web", "Local" , "QnA"]
 def on_button(option):
 	print(option)
 	if option == "Local":
+		query = searchBox.get()
+		commandList = []
+	#if tokens[0] in ['file','document']:
+
+		command = "sudo find /Users -type f -name '" + query + "'"  
+		ans = subprocess.check_output(command, shell=True);
+		command = str(ans,'utf-8').rstrip()
+		commands = command.split("\n")
+		for i in commands:
+			commandList.append(i)
+		print("in here")
+		#os.system(command)
+		#if tokens[0] in ['directory','folder']:
+		command = "sudo find /Users -type d -name '" + query + "'"  
+		#os.system(command)
+		ans = subprocess.check_output(command, shell=True);
+		#print(ans)
+		command = str(ans,'utf-8').rstrip()
+		commands = command.split("\n")
+		for i in commands:
+			commandList.append(i)
+		#print(commands)
+		for command in commandList:
+			print(command)
+			if len(command) > 0:
+				os.system("open " + command)
 		pass
 		"""GAURAV FUNCTION"""
 		
