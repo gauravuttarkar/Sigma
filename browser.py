@@ -2,7 +2,7 @@ import os
 import sys
 
 from PyQt5 import QtCore, QtWidgets, QtWebEngineWidgets, uic
-
+from PIL import Image, ImageTk
 import tkinter as tk
 
 options = ["Web", "Local" , "QnA"]
@@ -37,8 +37,9 @@ master.title('Sigma Σ')
 master.geometry("%dx%d" % (1000, 500))
 
 b= tk.Button(master,command = on_search)
-photo= tk.PhotoImage(file="sigma1.png")
-b.config(image=photo,width="30",height="30")
+img = Image.open("sigma1.png")
+photo= tk.PhotoImage(img)
+b.config(width="30",height="30")
 b.pack()
 
 
