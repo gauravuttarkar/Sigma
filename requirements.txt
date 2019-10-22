@@ -1,5 +1,5 @@
 azure-cognitiveservices-speech==1.2.0
-Pillow==5.4.1
+Pillow==6.2.0
 PyQt5==5.11.3
 PyQt5-sip==4.19.13
 selenium==3.141.0
